@@ -278,7 +278,26 @@ color: grey;
 border: none;
 background: yellow;
 }
-
+#boost {
+position: absolute;
+left: 750px;
+top: 23px;
+width: 30px;
+cursor: pointer;
+z-index: 1;
+}
+#boostColor {
+position: absolute;
+left: 740px;
+width: 50px;
+height: 50px;
+cursor: pointer;
+border: none;
+border-radius: 50%;
+}
+#boostColor:hover {
+background: #bad8ff;
+}
 </style>
 </head>
 <body onload="welcomeFunction()">
@@ -339,15 +358,18 @@ background: yellow;
 <button class="edit" onclick=salt(newCode.innerHTML,'download.html')>.html</button>
 </div>
 
-<img src="https://drive.google.com/thumbnail?id=1q4rxf_L2_ekx8kOK2qrtjs4wWK5Q0A9F" id="shortcut" onmouseover="bigChop()" onmouseout="littleChop()" onclick="showShortcut()" title="Photon Drive shortcut"></img>
-<button id="shortcutColor" onmouseover="bigChop()" onmouseout="littleChop()"onclick="showShortcut()" title="Photon Drive shortcut"></button>
+<a href="https://lb123658.github.io/Boost-HTML-Editor/" target="_blank">
+<img src="https://drive.google.com/thumbnail?id=1Nqkc6CbpT-qKH3z9fcuUG1Z_XaWudENc" id="boost" onmouseover="colorButtonn()" onmouseout="uncolorPuton()" title="Boost HTML Editor"></img>
+<button id="boostColor" onmouseover="colorButtonn()" onmouseout="uncolorPuton()" title="Boost HTML Editor"></button></a>
 
+<img src="https://drive.google.com/thumbnail?id=1q4rxf_L2_ekx8kOK2qrtjs4wWK5Q0A9F" id="shortcut" onmouseover="bigChop()" onmouseout="littleChop()" onclick="showShortcut()" title="Photon Drive shortcut"></img>
+<button id="shortcutColor" onmouseover="bigChop()" onmouseout="littleChop()"onclick="showShortcut()" title="Photon Drive shortcut"></button>  
 
 <button id="hrefHome" title="PF Editor" onclick="showMenu()">PF Editor Pro</button>
 <img src="https://drive.google.com/thumbnail?id=1GkuLONytoggfFy2AkGK_pZz6SqAZCTOI" id="mainLogo" title="PF Editor"></img>
 </div>
 <div id="settings">
-<p id="aboutPf">PF Editor Pro<br>Version 1.0.3<br>©2021 PrintableForms</p>
+<p id="aboutPf">PF Editor Pro<br>Version 1.0.4<br>©2021 PrintableForms</p>
 <a href="https://sites.google.com/view/explorer-search-engine/pf-editor-pro-help" target="_blank">
 <button id="version">PF Editor Pro help</button></a><br>
 <a href="https://sites.google.com/view/photon-computers/drive" target="_blank">
@@ -629,7 +651,7 @@ function closeNew()
 document.getElementById('newCode').style.visibility="hidden";
 }
 function welcomeFunction() {
-alert("Welcome to PF Editor Pro version 1.0.3");
+alert("Welcome to PF Editor Pro version 1.0.4");
 }
 function resetSave() {
 document.getElementById('textStatus').style.color="red";
@@ -758,6 +780,13 @@ function salt(textToWrite, fileNameToSaveAs)
     
     	downloadLink.click();
     } 
+    
+function colorButtonn() {
+document.getElementById("boostColor").style.background="#bad8ff";
+}
+function uncolorPuton() {
+document.getElementById("boostColor").style.background="transparent";
+}
 </script>
 
 </body>

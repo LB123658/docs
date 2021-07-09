@@ -97,6 +97,24 @@ min-width: 350px;
 max-width: 900px;
 display: none;
 }
+#share {
+position: absolute;
+right: 200px;
+top: 15px;
+}
+@media screen and (max-width: 950px) {
+  #share {
+    display: none;
+  }
+}
+@media screen and (max-width: 770px) {
+  #share {
+    display: none;
+  }
+  #download {
+    display: none;
+  }
+}
 </style>
 </head>
 <body>
@@ -104,6 +122,9 @@ display: none;
   <input type="text" id="docTitle" placeholder="Untitled document" onkeyup="setTitle()" autocomplete="off">
   <p id="chars">Start typing to begin</p>
   <button id="download" class="b" onclick="showDiv()">Download</button>
+  <a href="mailto:" target="_blank">
+    <button id="share" class="b">Share</button>
+  </a>
 </div>
 
 <div id="downloadOpt">

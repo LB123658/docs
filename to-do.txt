@@ -1,5 +1,0 @@
-TO DO
-1. Update page look
-2. Change saving fuatures so files can be uploaded and edited
-3. Update look of auto-generated HTML so it looks better
-4. Show file system and title of page

@@ -187,7 +187,7 @@ top: 15px;
   <button onclick="hide(alert)" class="b" style="float:right;">Close</button>
 </div>
 
-<textarea id="doc" onkeyup="countCharacters(); storeDoc()"></textarea>
+<textarea id="doc" onkeyup="countCharacters();"></textarea>
 <script>
 //variables for script
 var docTitle = document.getElementById("docTitle");
@@ -221,7 +221,7 @@ chars.innerHTML = "Characters: " + doc.value.length;
 function downloadHtml() {
 var a = document.body.appendChild(document.createElement("a"));
 a.download = docTitle.value;
-a.href = "data:text/html," + doc.value;
+a.href = "data:text/html," + "<title>" + docTitle.value + "</title><p style='font-family:arial;'>" + doc.value.replace(/\n/gi, "<br>") + "</p>";
 a.click();
 }
 function downloadText() {

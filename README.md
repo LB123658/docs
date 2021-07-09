@@ -4,3 +4,6 @@
 * Allows you to download documents as text files of HTML.
 * Built-in sharing with email
 * Downloading works with up to 13.5 MB of text
+\
+\
+\

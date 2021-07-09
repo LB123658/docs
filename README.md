@@ -4,7 +4,7 @@
 * Allows you to download documents as text files of HTML.
 * Built-in sharing with email
 * Downloading works with up to 13.5 MB of text
-<br>
+
 # Notebook
 ### Take notes, save, copy, and share them.
 ## Try it [here](https://lb123658.github.io/docs/note)

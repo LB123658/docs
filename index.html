@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -98,6 +99,22 @@ min-width: 350px;
 max-width: 900px;
 display: none;
 }
+#shareOpt {
+position: absolute;
+top: 25%;
+width: 50%;
+left: 25%;
+z-index: 1;
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+background: white;
+padding: 20px;
+border-radius: 5px;
+user-select: none;
+-webkit-user-select: none;
+min-width: 350px;
+max-width: 900px;
+display: none;
+}
 #share {
 position: absolute;
 right: 200px;
@@ -122,40 +139,55 @@ top: 15px;
 <div id="top">
   <input type="text" id="docTitle" placeholder="Untitled document" onkeyup="setTitle()" autocomplete="off">
   <p id="chars">Start typing to begin</p>
-  <button id="download" class="b" onclick="showDiv()">Download</button>
-  <a href="mailto:" target="_blank">
-    <button id="share" class="b">Share</button>
-  </a>
+  <button id="download" class="b" onclick="show(div)">Download</button>
+  <button id="share" class="b" onclick="show(shareDiv)">Share</button>
 </div>
 
+<!-- save and share option divs -->
 <div id="downloadOpt">
   <h2>Document saving options</h2>
   <p>*Plain text will not save colors and other changes.</p>
   <br>
-  <button onclick="downloadHtml(); hideDiv()" class="b">Download as HTML</button>
+  <button onclick="downloadHtml(); hide(div)" class="b">Download as HTML</button>
   <br><br>
-  <button onclick="downloadText(); hideDiv()" class="b">Download as Plain Text</button>
+  <button onclick="downloadText(); hide(div)" class="b">Download as Plain Text</button>
   <br><br>
-  <button onclick="hideDiv()" class="b" style="float:right;">Close</button>
+  <button onclick="hide(div)" class="b" style="float:right;">Close</button>
+</div>
+
+<div id="shareOpt">
+  <h2>Document sharing options</h2>
+  <p>*Sharing by email will only share text.</p>
+  <br>
+  <button onclick="copyDoc(); hide(shareDiv)" class="b">Copy document</button>
+  <br><br>
+  <button onclick="sendEmail(); hide(shareDiv)" class="b">Send as email</button>
+  <br><br>
+  <button onclick="hide(shareDiv)" class="b" style="float:right;">Close</button>
 </div>
 
 <textarea id="doc" onkeyup="countCharacters(); storeDoc()"></textarea>
 <script>
+//variables for script
 var docTitle = document.getElementById("docTitle");
 var t = document.getElementById("t");
 var doc = document.getElementById("doc");
 var chars = document.getElementById("chars");
 var div = document.getElementById("downloadOpt");
+var shareDiv = document.getElementById("shareOpt");
 
+//focus textarea
 doc.focus();
 
-function hideDiv() {
-div.style.display = "none";
+//hide and show functions
+function hide(element) {
+element.style.display = "none";
 }
-function showDiv() {
-div.style.display = "block";
+function show(element) {
+element.style.display = "block";
 }
 
+//set doc title and count characters
 function setTitle() {
 t.innerHTML = docTitle.value;
 }
@@ -163,22 +195,30 @@ function countCharacters() {
 chars.innerHTML = "Characters: " + doc.value.length;
 }
 
-
+//download document
 function downloadHtml() {
-var a = document.body.appendChild(
-        document.createElement("a")
-        );
-           a.download = docTitle.value;
-           a.href = "data:text/html," + doc.value;
-           a.click(); //Trigger a click on the element
+var a = document.body.appendChild(document.createElement("a"));
+a.download = docTitle.value;
+a.href = "data:text/html," + doc.value;
+a.click();
 }
 function downloadText() {
-var a = document.body.appendChild(
-        document.createElement("a")
-        );
-           a.download = docTitle.value;
-           a.href = "data:text/plain," + doc.value;
-           a.click(); //Trigger a click on the element
+var a = document.body.appendChild(document.createElement("a"));
+a.download = docTitle.value;
+a.href = "data:text/plain," + doc.value;
+a.click();
+}
+
+//copy document
+function copyDoc() {
+doc.select();
+doc.setSelectionRange(0, 99999)
+document.execCommand("copy");
+}
+
+//email document
+function sendEmail() {
+window.open("mailto:?subject=" + docTitle.value + "&body=" + doc.value, "_blank");
 }
 </script>
 </body>

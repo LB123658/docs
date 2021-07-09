@@ -1,0 +1,295 @@
+#page {
+width: 90%;
+height: 800px;
+border: none;
+position: absolute;
+top: 120px;
+left: 5%;
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+#page:focus {
+outline-width: 0;
+}
+.edit {
+width: 100px;
+border: none;
+background: transparent;
+border-radius: 4px;
+height: 30px;
+text-align: left;
+}
+.edit:hover {
+background: #bad8ff;
+}
+#fontPicker {
+position: absolute;
+left: 7px;
+width: 100px;
+height: 150px;
+z-index: 1;
+background: white;
+visibility: hidden;
+border: 2px solid #ededed;
+border-radius: 4px;
+}
+#colorPicker {
+position: absolute;
+left: 110px;
+width: 100px;
+height: 120px;
+z-index: 1;
+background: white;
+visibility: hidden;
+border: 2px solid #ededed;
+border-radius: 4px;
+}
+#saver {
+position: absolute;
+left: 215px;
+width: 100px;
+z-index: 1;
+background: white;
+visibility: hidden;
+border: 2px solid #ededed;
+border-radius: 4px;
+}
+#sizer {
+position: absolute;
+left: 320px;
+width: 100px;
+z-index: 1;
+background: white;
+visibility: hidden;
+border: 2px solid #ededed;
+border-radius: 4px;
+}
+#aligner {
+position: absolute;
+left: 425px;
+width: 100px;
+z-index: 1;
+background: white;
+visibility: hidden;
+border: 2px solid #ededed;
+border-radius: 4px;
+}
+
+#topNav {
+background: #f5f5f5;
+height: 100px;
+border-radius: 4px;
+}
+#textStatus {
+color: red;
+}
+#myStatus {
+position: absolute;
+left: 550px;
+width: 100px;
+z-index: 1;
+background: white;
+visibility: hidden;
+border: 2px solid #ededed;
+border-radius: 4px;
+}
+#textStatus {
+position: absolute;
+left: 550px;
+width: 100px;
+z-index: 1;
+}
+#mainLogo {
+width: 90px;
+float: right;
+}
+#hrefHome {
+float: right;
+border: none;
+width: 180px;
+font-family: futura;
+font-color: grey; 
+font-size: 30px;
+border-radius: 10px;
+background: transparent;
+}
+#hrefHome:hover {
+background: #e3eefa;
+border: 1px solid grey;
+cursor: pointer;
+}
+#settings {
+width: 270px;
+height: 300px;
+position: absolute;
+top: 100px;
+border-radius: 0px 0px 10px 10px;
+border: 2px solid #ededed;
+z-index: 1;
+visibility: hidden;
+right: 5px;
+background: white;
+}
+#aboutPf {
+font-family: futura;
+color: grey;
+text-align: center;
+cursor: default;
+border-radius: 0px;
+}
+
+#version {
+font-family: futura;
+color: grey;
+text-align: center;
+cursor: default;
+border-radius: 5px;
+width: 270px;
+border: none;
+height: 50px;
+font-size: 20px;
+background: transparent;
+}
+#version:hover {
+background: #e3eefa;
+border: 1px solid grey;
+}
+#warning {
+font-family: futura;
+color: grey;
+text-align: center;
+cursor: default;
+border-radius: 5px;
+width: 270px;
+border: none;
+height: 50px;
+font-size: 20px;
+background: transparent;
+}
+#warning:hover {
+background: #e3eefa;
+border: 1px solid grey;
+}
+#fotter {
+font-family: futura;
+color: grey;
+text-align: center;
+cursor: pointer;
+border-radius: 5px;
+width: 100px;
+border: none;
+height: 50px;
+font-size: 20px;
+position: absolute;
+top: 230px;
+right: 75px;
+background: transparent;
+}
+#fotter:hover {
+background: #e3eefa;
+border: 1px solid grey;
+}
+.codeHiders {
+z-index: 1;
+width: 100%;
+height: 20px;
+color: black;
+}
+#newCode {
+position: absolute;
+top: 200px;
+left: 200px;
+visibility: hidden;
+background: white;
+font-family: courier new;
+z-index: 1;
+border: 2px solid red;
+border-radius: 10px;
+width: 400px;
+}
+#haha {
+position: absolute;
+z-index: 1;
+top: 157px;
+right: 235px;
+width: 30px;
+}
+#shortcut {
+position: absolute;
+left: 685px;
+top: 18px;
+width: 30px;
+cursor: pointer;
+z-index: 1;
+}
+#shortcutColor {
+position: absolute;
+left: 675px;
+width: 50px;
+height: 50px;
+cursor: pointer;
+border: none;
+border-radius: 50%;
+}
+#shortcutColor:hover {
+background: #bad8ff;
+}
+#downloader {
+position: absolute;
+left: 652px;
+width: 100px;
+z-index: 1;
+top: 118px;
+visibility: hidden;
+background: white;
+border: 2px solid #ededed;
+border-radius: 4px;
+}
+#capn {
+position: absolute;
+left: 685px;
+width: 200px;
+z-index: 1;
+top: 70px;
+visibility: hidden;
+background: white;
+border: 2px solid #ededed;
+border-radius: 4px;
+height: 200px;
+}
+#directions {
+font-family: futura;
+color: grey;
+cursor: default;
+font-size: 17px;
+text-align: center;
+}
+#bigZelch {
+width: 100%;
+font-weight: bold;
+}
+#elFot {
+width: 180px;
+color: grey;
+border: none;
+background: yellow;
+}
+#boost {
+position: absolute;
+left: 750px;
+top: 23px;
+width: 30px;
+cursor: pointer;
+z-index: 1;
+}
+#boostColor {
+position: absolute;
+left: 740px;
+width: 50px;
+height: 50px;
+cursor: pointer;
+border: none;
+border-radius: 50%;
+}
+#boostColor:hover {
+background: #bad8ff;
+}

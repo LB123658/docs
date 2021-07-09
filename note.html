@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Notebook</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+<link rel='icon' href='https://lb123658.github.io/logo.png' type='image/png'> 
+<style>
+#page {
+position: absolute;
+top: 10%;
+left: 15%;
+width: 70%;
+height: 80%;
+border: none;
+border-radius: 0px;
+background: white;
+color: black;
+font-family: courier new;
+font-size: 18px;
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+padding-left: 10px;
+padding-right: 10px;
+padding-top: 10px;
+padding-bottom: 10px;
+}
+#page:focus {
+outline-width: 0;
+}
+#nav {
+position: absolute;
+top: 0px;
+left: 0px;
+width: 300px;
+height: 65px;
+background: #4376a6;
+font-family: courier new;
+color: white;
+font-size: 25px;
+padding-left: 20px;
+}
+#saveNote {
+position: absolute;
+top: 13px;
+right: 20px;
+width: 40px;
+height: 40px;
+border: 2px solid white;
+color: white;
+background: transparent;
+border-radius: 50%;
+cursor: pointer;
+}
+#saveNote:hover {
+animation-name: fade;
+animation-duration: 0.9s;
+animation-iteration-count: 1;
+background: white; 
+color: #4376a6;
+}
+@keyframes fade {
+  0% {background: transparent; color: white;}
+  100%   {background: white; color: #4376a6;}
+}
+#title {
+position: absolute;
+top: -5px;
+}
+#copyNote {
+position: absolute;
+top: 13px;
+right: 70px;
+width: 40px;
+height: 40px;
+border: 2px solid white;
+color: white;
+background: transparent;
+border-radius: 50%;
+cursor: pointer;
+}
+#copyNote:hover {
+animation-name: fade;
+animation-duration: 0.9s;
+animation-iteration-count: 1;
+background: white; 
+color: #4376a6;
+}
+#mail {
+position: absolute;
+top: 13px;
+right: 120px;
+width: 40px;
+height: 40px;
+border: 2px solid white;
+color: white;
+background: transparent;
+border-radius: 50%;
+cursor: pointer;
+}
+#mail:hover {
+animation-name: fade;
+animation-duration: 0.9s;
+animation-iteration-count: 1;
+background: white; 
+color: #4376a6;
+}
+</style>
+</head>
+<body>
+<div id="nav">
+<p id="title">Notebook</p>
+<button id="saveNote" onclick="save(); showSave();" title="Save your note"><span class="material-icons">save</span></button>
+<button id="copyNote" onclick="copy()" title="Copy your note"><span class="material-icons">content_copy</span></button>
+<a href="#" target="_blank" id="link">
+<button id="mail" title="Share this note" onclick="save()"><span class="material-icons">email</span></button></a>
+
+</div>
+<textarea id="page" placeholder="Take your first note here..."></textarea>
+
+<script>
+document.getElementById("page").innerHTML = localStorage.getItem("notebook");
+
+function save() {
+// Check browser support
+var input = document.getElementById("page");
+if (typeof(Storage) !== "undefined") {
+  // Store
+  localStorage.setItem("notebook", input.value);
+  // Retrieve
+  document.getElementById("page").innerHTML = localStorage.getItem("notebook");
+} else {
+  alert("Your browser does not allow this note to be saved");
+}
+document.getElementById("link").href = "mailto:?subject=My%20note&body=" + localStorage.getItem("notebook");
+}
+
+function copy() {
+  var copyText = document.getElementById("page");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999)
+  document.execCommand("copy");
+  alert("The document has been copied.");
+}  
+function showSave() {
+alert("Your document has been saved");
+}
+</script>
+</body>
+</html>

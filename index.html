@@ -172,7 +172,7 @@ background: white;
 display: none;
 }
 .dropdownButton {
-height: 35px;
+min-height: 35px;
 width: 100%;
 font-size: 17px;
 background: white;
@@ -250,7 +250,7 @@ Editing options are turned off.
   <button onclick="hide(alert)" class="b" style="float:right;">Close</button>
 </div>
 
-<textarea id="doc" onkeyup="countCharacters();"></textarea>
+<textarea id="doc" onkeyup="countCharacters(); backUp()"></textarea>
 <script>
 //variables for script
 var docTitle = document.getElementById("docTitle");
@@ -316,13 +316,22 @@ alert.style.display = "block";
 alert.innerHTML = phrase + "<br><br><button class='b' style='float:right;' onclick='hide(alert)'>Close</button>";
 }
 
+//local storage back up
+function backUp() {
+localStorage.setItem("doc-back-up", docTitle.value + ";" + doc.value);
+}
+function restore() {
+doc.value = localStorage.getItem("doc-back-up").split(";")[1];
+docTitle.value = localStorage.getItem("doc-back-up").split(";")[0];
+}
 //dropdown divs
 function openFile() {
 dropdown.style.left = "330px";
-dropdown.innerHTML = "<button class='dropdownButton' onclick='restore()'>Restore changes</button> <button class='dropdownButton' onclick='downloadHtml()'>Download file</button>";
+dropdown.innerHTML = "<button class='dropdownButton' onclick='downloadHtml()'>Download as html</button> <button class='dropdownButton' onclick='downloadText()'>Download as text</button> <button class='dropdownButton' onclick='sendEmail()'>Share by email</button>";
 }
 function openEdit() {
 dropdown.style.left = "390px";
+dropdown.innerHTML = "<button class='dropdownButton' onclick='restore()'>Restore changes</button> <button class='dropdownButton' onclick='copyDoc()'>Copy all</button>";
 }
 </script>
 </body>

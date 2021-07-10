@@ -134,6 +134,59 @@ position: absolute;
 right: 200px;
 top: 15px;
 }
+#file {
+position: absolute;
+top: 10px;
+left: 330px;
+}
+#edit {
+position: absolute;
+top: 10px;
+left: 390px;
+}
+.menu {
+height: 35px;
+width: 50px;
+font-size: 17px;
+background: white;
+border: 2px solid lightgrey;
+border-radius: 5px;
+}
+.menu:hover {
+background: lightgrey;
+}
+.menu:focus {
+background: #047afd;
+border: 2px solid #047afd;
+color: white;
+}
+#dropdown {
+position: absolute;
+top: 45px;
+width: 150px;
+z-index: 1;
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+border-radius: 5px;
+padding: 5px;
+background: white;
+display: none;
+}
+.dropdownButton {
+height: 35px;
+width: 100%;
+font-size: 17px;
+background: white;
+border: none;
+border-radius: 5px;
+text-align: left;
+}
+.dropdownButton:hover {
+background: lightgrey;
+}
+.dropdownButton:focus {
+background: #047afd;
+color: white;
+}
 @media screen and (max-width: 950px) {
   #share {
     display: none;
@@ -155,6 +208,16 @@ top: 15px;
   <p id="chars">Start typing to begin</p>
   <button id="download" class="b" onclick="show(div)">Download</button>
   <button id="share" class="b" onclick="show(shareDiv)">Share</button>
+  
+  <!-- menu dropdown buttons -->
+  <button class="menu" id="file" onmouseover="show(dropdown); openFile()" onmouseout="hide(dropdown)">File</button>
+  <button class="menu" id="edit" onmouseover="show(dropdown); openEdit()" onmouseout="hide(dropdown)">Edit</button>
+</div>
+
+
+<!-- dropdown menus -->
+<div id="dropdown" onmouseover="show(dropdown)" onmouseout="hide(dropdown)">
+Editing options are turned off.
 </div>
 
 <!-- save, alert, and share option divs -->
@@ -197,6 +260,7 @@ var chars = document.getElementById("chars");
 var div = document.getElementById("downloadOpt");
 var shareDiv = document.getElementById("shareOpt");
 var alert = document.getElementById("alert");
+var dropdown = document.getElementById("dropdown");
 
 //focus textarea
 doc.focus();
@@ -212,6 +276,9 @@ element.style.display = "block";
 //set doc title and count characters
 function setTitle() {
 t.innerHTML = docTitle.value;
+  if (docTitle.value == "") {
+    t.innerHTML = "Docs";
+  }
 }
 function countCharacters() {
 chars.innerHTML = "Characters: " + doc.value.length;
@@ -247,6 +314,15 @@ window.open("mailto:?subject=" + docTitle.value + "&body=" + doc.value, "_blank"
 function notify(phrase) {
 alert.style.display = "block";
 alert.innerHTML = phrase + "<br><br><button class='b' style='float:right;' onclick='hide(alert)'>Close</button>";
+}
+
+//dropdown divs
+function openFile() {
+dropdown.style.left = "330px";
+dropdown.innerHTML = "<button class='dropdownButton' onclick='restore()'>Restore changes</button> <button class='dropdownButton' onclick='downloadHtml()'>Download file</button>";
+}
+function openEdit() {
+dropdown.style.left = "390px";
 }
 </script>
 </body>

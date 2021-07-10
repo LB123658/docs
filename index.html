@@ -298,11 +298,14 @@ a.href = "data:text/plain," + doc.value;
 a.click();
 }
 
-//copy document
+//copy and select document
 function copyDoc() {
 doc.select();
 doc.setSelectionRange(0, 99999)
 document.execCommand("copy");
+}
+function selectDoc() {
+doc.select();
 }
 
 //email document
@@ -327,11 +330,11 @@ docTitle.value = localStorage.getItem("doc-back-up").split(";")[0];
 //dropdown divs
 function openFile() {
 dropdown.style.left = "330px";
-dropdown.innerHTML = "<button class='dropdownButton' onclick='downloadHtml()'>Download as html</button> <button class='dropdownButton' onclick='downloadText()'>Download as text</button> <button class='dropdownButton' onclick='sendEmail()'>Share by email</button>";
+dropdown.innerHTML = "<button class='dropdownButton' onclick='downloadHtml()'>Download as html</button> <button class='dropdownButton' onclick='downloadText()'>Download as text</button> <button class='dropdownButton' onclick='sendEmail()'>Share by email</button> <button class='dropdownButton' onclick='window.print();'>Print</button>";
 }
 function openEdit() {
 dropdown.style.left = "390px";
-dropdown.innerHTML = "<button class='dropdownButton' onclick='restore()'>Restore changes</button> <button class='dropdownButton' onclick='copyDoc()'>Copy all</button>";
+dropdown.innerHTML = "<button class='dropdownButton' onclick='restore()'>Restore changes</button> <button class='dropdownButton' onclick='copyDoc()'>Copy all</button> <button class='dropdownButton' onclick='selectDoc()'>Select all</button>";
 }
 </script>
 </body>

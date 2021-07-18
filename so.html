@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title id="t">Doci</title>
+<link rel="icon" href="https://ssl.gstatic.com/docs/doclist/images/mediatype/icon_2_archive_x128.png" type="image/png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+<style>
+* {
+font-family: 'Roboto', sans-serif;
+}
+#top {
+position: fixed;
+top: 0px;
+left: 0px;
+width: 100%;
+height: 80px;
+background: white;
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+#docTitle {
+position: absolute;
+top: 10px;
+left: 10px;
+height: 30px;
+width: 300px;
+border: 2px solid lightgrey;
+font-size: 16px;
+color: grey;
+border-radius: 5px;
+font-weight: bold;
+}
+#docTitle:focus {
+outline-width: 0px;
+border: 2px solid #047afd;
+}
+.b {
+height: 50px;
+border-radius: 25px;
+border: 2px solid #047afd;
+color: #047afd;
+font-size: 25px;
+font-weight: bold;
+padding-left: 30px;
+padding-right: 30px;
+background: white;
+}
+.b:hover {
+cursor: pointer;
+background: #047afd;
+color: white;
+}
+.b:focus {
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+#download {
+position: absolute;
+right: 20px;
+top: 15px;
+}
+#doc {
+position: absolute;
+top: 15%;
+left: 15%;
+width: 70%;
+height: 75%;
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+border: none;
+font-size: 15px;
+padding: 20px;
+}
+#doc:focus {
+outline-width: 0px;
+}
+#chars {
+position: absolute;
+bottom: -7px;
+left: 10px;
+user-select: none;
+-webkit-user-select: none;
+width: 300px;
+text-align: center;
+}
+#downloadOpt {
+position: absolute;
+top: 25%;
+width: 50%;
+left: 25%;
+z-index: 1;
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+background: white;
+padding: 20px;
+border-radius: 5px;
+user-select: none;
+-webkit-user-select: none;
+min-width: 350px;
+max-width: 900px;
+display: none;
+}
+#shareOpt {
+position: absolute;
+top: 25%;
+width: 50%;
+left: 25%;
+z-index: 1;
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+background: white;
+padding: 20px;
+border-radius: 5px;
+user-select: none;
+-webkit-user-select: none;
+min-width: 350px;
+max-width: 900px;
+display: none;
+}
+#alert {
+position: absolute;
+top: 25%;
+width: 400px;
+left: 50%;
+margin-left: -200px;
+z-index: 1;
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+background: white;
+padding: 20px;
+border-radius: 5px;
+user-select: none;
+-webkit-user-select: none;
+display: none;
+}
+#share {
+position: absolute;
+right: 200px;
+top: 15px;
+}
+#file {
+position: absolute;
+top: 10px;
+left: 330px;
+}
+#edit {
+position: absolute;
+top: 10px;
+left: 390px;
+}
+.menu {
+height: 35px;
+width: 50px;
+font-size: 17px;
+background: white;
+border: 2px solid lightgrey;
+border-radius: 5px;
+}
+.menu:hover {
+background: lightgrey;
+}
+.menu:focus {
+background: #047afd;
+border: 2px solid #047afd;
+color: white;
+}
+#dropdown {
+position: absolute;
+top: 45px;
+width: 150px;
+z-index: 1;
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+border-radius: 5px;
+padding: 5px;
+background: white;
+display: none;
+}
+.dropdownButton {
+min-height: 35px;
+width: 100%;
+font-size: 17px;
+background: white;
+border: none;
+border-radius: 5px;
+text-align: left;
+}
+.dropdownButton:hover {
+background: lightgrey;
+}
+.dropdownButton:focus {
+background: #047afd;
+color: white;
+}
+@media screen and (max-width: 950px) {
+  #share {
+    display: none;
+  }
+}
+@media screen and (max-width: 770px) {
+  #share {
+    display: none;
+  }
+  #download {
+    display: none;
+  }
+}
+</style>
+</head>
+<body>
+<div id="top">
+  <input type="text" id="docTitle" placeholder="Njetitlal documęt" onkeyup="setTitle()" autocomplete="off">
+  <p id="chars">Start tlhpanie aszebegin </p>
+  <button id="download" class="b" onclick="show(div)">Dovnload</button>
+  <button id="share" class="b" onclick="show(shareDiv)">Saaru</button>
+  
+  <!-- menu dropdown buttons -->
+  <button class="menu" id="file" onmouseover="show(dropdown); openFile()" onmouseout="hide(dropdown)">Fil</button>
+  <button class="menu" id="edit" onmouseover="show(dropdown); openEdit()" onmouseout="hide(dropdown)">Alit</button>
+</div>
+
+
+<!-- dropdown menus -->
+<div id="dropdown" onmouseover="show(dropdown)" onmouseout="hide(dropdown)">
+Alitanie optsjai aaru turnal off.
+</div>
+
+<!-- save, alert, and share option divs -->
+<div id="downloadOpt">
+  <h2>Documęt savanie optsjas</h2>
+  <p>*Plân text vill not sav colečasz esa oþer čangei.</p>
+  <br>
+  <button onclick="downloadHtml(); hide(div)" class="b">Dovnload ai HTML</button>
+  <br><br>
+  <button onclick="downloadText(); hide(div)" class="b">Dovnload ai Plân Text</button>
+  <br><br>
+  <button onclick="hide(div)" class="b" style="float:right;">Cloi</button>
+</div>
+
+<div id="shareOpt">
+  <h2>Documęt saranie optsjai </h2>
+  <p>*Saranie paemâl vill onllh saaru text.</p>
+  <br>
+  <button onclick="copyDoc(); hide(shareDiv); notify('Aznadocumęt vai copial.')" class="b">Coplh documęt</button>
+  <br><br>
+  <button onclick="sendEmail(); hide(shareDiv)" class="b">Sęd ai emâl</button>
+  <br><br>
+  <button onclick="hide(shareDiv)" class="b" style="float:right;">Cloi</button>
+</div>
+
+<div id="alert">
+  <h2>þii cam up paaccidęt </h2>
+  <p>If þii kipi comanie up sav lhur večask esa aruload aznavebsit.</p>
+  <br><br>
+  <button onclick="hide(alert)" class="b" style="float:right;">Cloi</button>
+</div>
+
+<textarea id="doc" onkeyup="countCharacters(); backUp()"></textarea>
+<script>
+//variables for script
+var docTitle = document.getElementById("docTitle");
+var t = document.getElementById("t");
+var doc = document.getElementById("doc");
+var chars = document.getElementById("chars");
+var div = document.getElementById("downloadOpt");
+var shareDiv = document.getElementById("shareOpt");
+var alert = document.getElementById("alert");
+var dropdown = document.getElementById("dropdown");
+
+//focus textarea
+doc.focus();
+
+//hide and show functions
+function hide(element) {
+element.style.display = "none";
+}
+function show(element) {
+element.style.display = "block";
+}
+
+//set doc title and count characters
+function setTitle() {
+t.innerHTML = docTitle.value;
+  if (docTitle.value == "") {
+    t.innerHTML = "Doci";
+  }
+}
+function countCharacters() {
+chars.innerHTML = "Čaracteri : " + doc.value.length;
+}
+
+//download document
+function downloadHtml() {
+var a = document.body.appendChild(document.createElement("a"));
+a.download = docTitle.value;
+a.href = "data:text/html," + "<title>" + docTitle.value + "</title><p style='font-family:arial;'>" + doc.value.replace(/\n/gi, "<br>") + "</p>";
+a.click();
+}
+function downloadText() {
+var a = document.body.appendChild(document.createElement("a"));
+a.download = docTitle.value;
+a.href = "data:text/plain," + doc.value;
+a.click();
+}
+
+//copy and select document
+function copyDoc() {
+doc.select();
+doc.setSelectionRange(0, 99999)
+document.execCommand("copy");
+}
+function selectDoc() {
+doc.select();
+}
+
+//email document
+function sendEmail() {
+window.open("mailto:?subject=" + docTitle.value + "&body=" + doc.value, "_blank");
+}
+
+//notifications
+function notify(phrase) {
+alert.style.display = "block";
+alert.innerHTML = phrase + "<br><br><button class='b' style='float:right;' onclick='hide(alert)'>Cloi</button>";
+}
+
+//local storage back up
+function backUp() {
+localStorage.setItem("doc-back-up", docTitle.value + ";" + doc.value);
+}
+function restore() {
+doc.value = localStorage.getItem("doc-back-up").split(";")[1];
+docTitle.value = localStorage.getItem("doc-back-up").split(";")[0];
+}
+//dropdown divs
+function openFile() {
+dropdown.style.left = "330px";
+dropdown.innerHTML = "<button class='dropdownButton' onclick='downloadHtml()'>Dovnload ai HTML</button> <button class='dropdownButton' onclick='downloadText()'>Dovnload ai text</button> <button class='dropdownButton' onclick='sendEmail()'>Sęd ai emâl</button> <button class='dropdownButton' onclick='window.print();'>Print</button>";
+}
+function openEdit() {
+dropdown.style.left = "390px";
+dropdown.innerHTML = "<button class='dropdownButton' onclick='restore()'>Arustoaru čangei</button> <button class='dropdownButton' onclick='copyDoc()'>Coplh all </button> <button class='dropdownButton' onclick='selectDoc()'>Select all</button>";
+}
+</script>
+</body>
+</html>
